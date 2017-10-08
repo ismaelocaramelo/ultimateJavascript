@@ -1,22 +1,21 @@
-// 2: template strings - multiline
-// To do: make all tests pass, leave the asserts unchanged!
+var assert = require('assert');
 
-describe('template string, can contain multiline content', function() {
+describe('template string, can contain multiline content', function () {
 
-  it('a normal string can`t span across multiple lines', function() {
-    var normalString = 'line1' + 
-                        '\n' +
-                       'line2';
+  it('a normal string can`t span across multiple lines', function () {
+    var normalString = 'line1' +
+      '\n' +
+      'line2';
     assert.equal(normalString, 'line1\nline2');
   });
   // Nota: cuidado con los espacios que nos dejan al hacer las multiples líneas sin comillas
-  it('wrapped in backticks it can span over multiple lines', function() {
+  it('wrapped in backticks it can span over multiple lines', function () {
     var templateString = `line1
 line2`;
     assert.equal(templateString, 'line1\nline2');
   });
-  
-  it('even over more than two lines', function() {
+
+  it('even over more than two lines', function () {
     var multiline = `line 1
                      line 2
                      line 3
@@ -24,22 +23,22 @@ line2`;
     assert.equal(multiline.split('\n').length, 4);
   });
 
-  describe('and expressions inside work too', function() {
-    
+  describe('and expressions inside work too', function () {
+
     var x = 42;
-    
-    it('like simple variables', function() {
+
+    it('like simple variables', function () {
       var multiline = `line 1
           ${x}`;
       assert.equal(multiline, 'line 1\n          42');
     });
-    
-    it('also here spaces matter', function() {
+
+    it('also here spaces matter', function () {
       var multiline = `
 ${x}`;
       assert.equal(multiline, '\n42');
     });
-    
+
   });
-  
+
 });
